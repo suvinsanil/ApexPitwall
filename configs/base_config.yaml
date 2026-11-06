@@ -1,0 +1,81 @@
+# ApexPitwall base configuration.
+# Every numeric value here is either (a) a regulation constant, (b) a data-handling
+# rule, or (c) an ASSUMPTION that is explicitly labelled. Values estimated from data
+# are NOT stored here; they are written to data/processed/*.json by the pipeline.
+
+season: 2022
+cache_dir: data/cache
+processed_dir: data/processed
+models_dir: models
+reports_dir: reports
+figures_dir: reports/figures
+random_seed: 42
+
+# Races selected in Phase 1 (reports/data_inspection_report.md).
+circuits: [sakhir, catalunya, zandvoort, rodriguez, yas_marina]
+# Primary held-out / simulation circuit.
+target_circuit: catalunya
+
+cleaning:
+  # FastF1 TrackStatus codes treated as non-green (2=yellow, 4=SC, 5=red, 6=VSC, 7=VSC ending).
+  non_green_codes: "24567"
+  dry_compounds: [SOFT, MEDIUM, HARD]
+  # Laps slower than this multiple of the race median clean lap are dropped (data-handling rule).
+  outlier_ratio: 1.15
+  # Lap 1 contains the standing start and is excluded from pace modelling.
+  exclude_lap_one: true
+
+fuel:
+  # Regulation constant: 2022 FIA Technical Regulations maximum race fuel mass (kg).
+  max_fuel_kg: 110.0
+  # ASSUMPTION: cars start with the maximum allowance and burn it linearly to zero at the
+  # chequered flag. Actual per-car fuel loads are not published.
+  burn_profile: linear
+
+traffic:
+  # ASSUMPTION (initial, not estimated): gap to car ahead below which a lap is considered
+  # traffic-affected for degradation fitting (plan section 9.1, risk 5).
+  degradation_filter_gap_s: 1.2
+  # ASSUMPTION (initial, not estimated): dirty-air indicator threshold (plan Stage A features).
+  dirty_air_gap_s: 1.5
+
+stage_a:
+  # Relative improvement over the rolling-median baseline that the model must achieve.
+  # Recorded to reports/evaluation/stage_a_target.json BEFORE any model is fitted.
+  target_relative_mae_improvement: 0.05
+  lgbm_params:
+    n_estimators: 300
+    learning_rate: 0.03
+    num_leaves: 15
+    min_child_samples: 40
+    subsample: 0.8
+    subsample_freq: 1
+    colsample_bytree: 0.8
+    reg_lambda: 1.0
+    verbose: -1
+  ridge_alpha: 1.0
+  # Secondary split (substitute for the plan's same-circuit/different-year split, which is
+  # impossible because 2023+ timing requires F1 TV authentication): first 60% of each race
+  # trains, final 40% tests.
+  temporal_train_fraction: 0.6
+
+stage_b:
+  # Quadratic wear term is only fitted when the compound has enough data; otherwise linear.
+  min_laps_for_quadratic: 150
+  min_drivers_for_quadratic: 3
+  bootstrap_reps: 300
+
+simulation:
+  # Plan Stage C strategy grid.
+  one_stop_pit_window: [15, 40]
+  two_stop_first_window: [12, 28]
+  two_stop_second_window: [32, 50]
+  min_laps_between_stops: 10
+  # Maximum stint length per compound = maximum clean tyre age observed in the data
+  # (estimated, written by Stage B). No assumed limits.
+
+monte_carlo:
+  n_sims: 2000
+  # ASSUMPTION used only if fewer than 3 VSC pit stops can be measured.
+  fallback_vsc_pit_loss_s: 11.0
+

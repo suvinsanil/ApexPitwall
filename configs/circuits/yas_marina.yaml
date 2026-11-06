@@ -1,0 +1,7 @@
+﻿# Circuit identity. Race distance is read from FastF1 (session.total_laps) at load time;
+# total_laps below is a cross-check only.
+circuit_id: yas_marina
+event_name: Abu Dhabi Grand Prix
+round: 22
+total_laps: 58
+venue: Yas Marina Circuit

@@ -1,0 +1,7 @@
+﻿# Circuit identity. Race distance is read from FastF1 (session.total_laps) at load time;
+# total_laps below is a cross-check only.
+circuit_id: sakhir
+event_name: Bahrain Grand Prix
+round: 1
+total_laps: 57
+venue: Bahrain International Circuit, Sakhir

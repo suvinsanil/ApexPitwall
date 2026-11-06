@@ -1,0 +1,7 @@
+﻿# Circuit identity. Race distance is read from FastF1 (session.total_laps) at load time;
+# total_laps below is a cross-check only.
+circuit_id: zandvoort
+event_name: Dutch Grand Prix
+round: 15
+total_laps: 72
+venue: Circuit Zandvoort

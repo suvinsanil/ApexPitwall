@@ -1,0 +1,7 @@
+﻿# Circuit identity. Race distance is read from FastF1 (session.total_laps) at load time;
+# total_laps below is a cross-check only.
+circuit_id: catalunya
+event_name: Spanish Grand Prix
+round: 6
+total_laps: 66
+venue: Circuit de Barcelona-Catalunya

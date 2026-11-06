@@ -1,0 +1,43 @@
+{
+  "circuit": "catalunya",
+  "grand_prix": "Spanish Grand Prix",
+  "season": 2022,
+  "sample_size_total_matched_stops": 53,
+  "sample_size_normal_green_stops": 51,
+  "pit_lane_transit_time": {
+    "description": "Duration between pit-entry loop (PitInTime) and pit-exit loop (PitOutTime)",
+    "mean_seconds": 22.678,
+    "median_seconds": 22.389,
+    "std_seconds": 1.034,
+    "q25_seconds": 22.035,
+    "q75_seconds": 23.085,
+    "status": "EMPIRICAL_MEASURED"
+  },
+  "total_pit_loss": {
+    "description": "Total race time lost relative to continuing at racing speed: (InLapTime + OutLapTime) - 2 * LocalRefPace",
+    "mean_seconds": 23.133,
+    "median_seconds": 22.586,
+    "std_seconds": 2.499,
+    "q25_seconds": 21.856,
+    "q75_seconds": 23.393,
+    "status": "EMPIRICAL_MEASURED"
+  },
+  "component_deltas": {
+    "in_lap_loss_median_seconds": 4.802,
+    "out_lap_loss_median_seconds": 17.784,
+    "sector3_entry_delta_seconds": 4.041,
+    "sector1_exit_delta_seconds": 19.016,
+    "status": "EMPIRICAL_MEASURED"
+  },
+  "stationary_service_time": {
+    "description": "Wheel-stop stationary duration (tyre change)",
+    "estimated_mean_seconds": 2.8,
+    "estimated_range_seconds": [
+      2.2,
+      3.5
+    ],
+    "status": "ASSUMPTION_INFERRED",
+    "justification": "FastF1 and FIA live timing do not log stationary wheel-on/wheel-off micro-timestamps in standard public feeds. PitOutTime - PitInTime measures total pit-lane transit (~22.4s). Subtracting the 370m pit lane transit at 80 km/h (~16.7s) and acceleration/deceleration margins (~2.5s) yields an inferred stationary stop time of 2.5\u20133.2s."
+  },
+  "recommended_simulation_pit_loss_seconds": 22.586
+}
