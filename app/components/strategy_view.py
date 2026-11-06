@@ -110,3 +110,4 @@ def render_strategy_tab():
                 ax_mc.legend()
                 ax_mc.grid(True, linestyle=":", alpha=0.6)
                 st.pyplot(fig_mc)
+

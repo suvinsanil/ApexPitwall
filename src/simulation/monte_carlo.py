@@ -110,3 +110,4 @@ class MonteCarloSimulator:
             "strat_1_distribution": times_1,
             "strat_2_distribution": times_2
         }
+

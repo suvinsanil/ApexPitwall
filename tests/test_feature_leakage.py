@@ -58,3 +58,4 @@ def test_rolling_pace_no_lookahead():
     assert np.isnan(df_full_feat.loc[0, "roll_mean_3"])
     # On lap 2, rolling mean of prior 1 lap should equal lap 1 lap_time
     assert np.isclose(df_full_feat.loc[1, "roll_mean_3"], df_full.loc[0, "lap_time_seconds"])
+

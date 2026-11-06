@@ -47,3 +47,4 @@ def test_flag_laps():
     assert not flagged.loc[3, "is_clean_lap"]
     # Lap 5 is Safety Car (code 4)
     assert not flagged.loc[4, "is_clean_lap"]
+

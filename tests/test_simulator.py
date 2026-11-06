@@ -39,3 +39,4 @@ def test_strategy_simulator_rollout():
     )
     assert len(res_2stop["stints"]) == 3
     assert np.isclose(res_2stop["pit_penalty_s"], 2 * pit_loss)
+

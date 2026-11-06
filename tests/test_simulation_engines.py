@@ -45,3 +45,4 @@ def test_monte_carlo_distribution():
     assert 0.0 <= res["prob_1_beats_2"] <= 1.0
     # 2-stop should have a higher win probability on Catalunya
     assert res["prob_1_beats_2"] > 0.60
+

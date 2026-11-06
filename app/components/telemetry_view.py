@@ -66,3 +66,4 @@ def render_telemetry_tab():
     ax2.legend(frameon=True)
     ax2.grid(True, linestyle=":", alpha=0.6)
     st.pyplot(fig2)
+

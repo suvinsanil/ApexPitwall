@@ -76,3 +76,4 @@ class CounterfactualEngine:
             "counterfactual_lap_times": sim_cf["lap_times"],
             "is_faster": delta_t_s > 0
         }
+

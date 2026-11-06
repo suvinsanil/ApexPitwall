@@ -48,3 +48,4 @@ with tab3:
     2. **Physics Fuel Disentanglement:** Fuel mass decreases linearly ($110 \\times (1 - \\text{lap}/N)$), isolating true tyre degradation (+0.04 to +0.06 s/lap) from vehicle lightening.
     3. **Strategy Optimization Verdict:** On Catalunya's high-wear surface, a **2-stop Soft -> Medium -> Soft strategy (stopping on Laps 18, 40)** beats 1-stop alternatives by **32 to 44 seconds**.
     """)
+
